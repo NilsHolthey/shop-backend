@@ -1,10 +1,15 @@
+import "../styles/globals.css";
+import "../styles/header.css";
+import "../styles/product.css";
+
 import Layout from "../src/components/Layout";
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Component {...pageProps} />
-      {""}
     </Layout>
   );
 }
+
+export default MyApp;

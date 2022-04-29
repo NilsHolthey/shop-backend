@@ -1,62 +1,34 @@
 import Link from "next/link";
-import { AppBar, Button, Container, Toolbar } from "@mui/material";
+import styled from "styled-components";
 
 export default function Header() {
   return (
-    <AppBar color="primary">
-      <Container maxWidth="xl">
-        <Toolbar>
-          <Link href="/" passHref>
-            <Button component="a" sx={{ color: "White" }}>
-              Produkte
-            </Button>
-          </Link>
-
-          <Link href="/categories" passHref>
-            <Button component="a" sx={{ color: "White" }}>
-              Kategorien
-            </Button>
-          </Link>
-
-          <Link href="/create-product" passHref>
-            <Button component="a" sx={{ color: "White" }}>
-              Produkt hinzufügen
-            </Button>
-          </Link>
-
-          <Link href="/create-category" passHref>
-            <Button component="a" sx={{ color: "White" }}>
-              Kategorie hinzufügen
-            </Button>
-          </Link>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <HeaderStyles>
+      <Link href="/products" passHref>
+        <button>Produkte</button>
+      </Link>
+      <Link href="/categories" passHref>
+        <button>Kategorien</button>
+      </Link>
+      <Link href="/create-product" passHref>
+        <button>Produkt hinzufügen</button>
+      </Link>
+      <Link href="/create-category" passHref>
+        <button>Kategorie hinzufügen</button>
+      </Link>
+    </HeaderStyles>
   );
 }
 
-// import Link from "next/link";
-// import { AppBar, Container, Toolbar } from "@mui/material";
-
-// export default function Header() {
-//   return (
-//     <AppBar color="primary">
-//       <Container maxWidth="xl">
-//         <Toolbar>
-//           <Link href="/" passHref>
-//             <button>Produkte</button>
-//           </Link>
-//           <Link href="/categories" passHref>
-//             <button>Kategorien</button>
-//           </Link>
-//           <Link href="/create-product" passHref>
-//             <button>Produkt hinzufügen</button>
-//           </Link>
-//           <Link href="/create-category" passHref>
-//             <button>Kategorie hinzufügen</button>
-//           </Link>
-//         </Toolbar>
-//       </Container>
-//     </AppBar>
-//   );
-// }
+const HeaderStyles = styled.header`
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: #fff;
+  background-color: rgb(23, 23, 116);
+  border-radius: 0 0 8px 8px;
+  gap: 20px;
+`;
