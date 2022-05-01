@@ -1,29 +1,26 @@
 import { useState } from "react";
-import styled from "styled-components";
+import { Button } from "./UI/Button.styled";
 
 export default function Product(props) {
-  const [isDeleteMode, setDeleteMode] = useState(false);
-
+  const [isDeleteMode, setIsDeleteMode] = useState(false);
   function enableDeleteMode() {
-    setIsEditMode(true);
+    setIsDeleteMode(true);
   }
-
   function disableDeleteMode() {
-    setDeleteMode(false);
+    setIsDeleteMode(false);
   }
-
   return (
-    <div>
+    <>
       {isDeleteMode ? (
-        <ProductModeEdit {...props} onDisableDeleteMode={disableDeleteMode} />
+        <ProductModeDelete {...props} onDisableDeleteMode={disableDeleteMode} />
       ) : (
         <ProductModeShow {...props} onEnableDeleteMode={enableDeleteMode} />
       )}
-    </div>
+    </>
   );
 }
-
 function ProductModeShow({
+  id,
   name,
   description,
   tags,
@@ -32,34 +29,28 @@ function ProductModeShow({
   onEnableDeleteMode,
 }) {
   return (
-    <div className="product__containerall">
-      <div className="product__container">
-        <div className="product__h5">
-          <h5>{name}</h5>
-          <h5>{price}</h5>
-        </div>
-        <div className="product__p">
-          <p>{description}</p>
-          <p>{category}</p>
-        </div>
-        <ProductList>
-          <li>{tags}</li>
-        </ProductList>
-        <div className="product__buttons">
-          <ButtonStyled
-            className="product__button"
-            onClick={onEnableDeleteMode}
-          >
-            Delete
-          </ButtonStyled>
-          <ButtonStyled className="product__button">Edit</ButtonStyled>
-        </div>
+    <div className="card">
+      <div>
+        <h5>{name}</h5>
+        <h5>{price}</h5>
+      </div>
+      <div>
+        <p>{description}</p>
+        <p>{category}</p>
+      </div>
+      <ul>
+        <li>{tags}</li>
+      </ul>
+      <div>
+        <Button>Edit</Button>
+        <Button onClick={onEnableDeleteMode}>Delete</Button>
       </div>
     </div>
   );
 }
 
-function ProductModeEdit({
+function ProductModeDelete({
+  id,
   name,
   description,
   tags,
@@ -77,23 +68,23 @@ function ProductModeEdit({
         <p>{description}</p>
         <p>{category}</p>
       </div>
-      <ProductList>
+      <ul>
         <li>{tags}</li>
-      </ProductList>
+      </ul>
       <div>
-        <button onClick={onDisableDeleteMode}>Abbrechen</button>
-        <button>Wirklich löschen</button>
+        <Button>Wirklich löschen</Button>
+        <Button onClick={onDisableDeleteMode}>Abbrechen</Button>
       </div>
     </div>
   );
 }
 
-const ButtonStyled = styled.button`
-  cursor: pointer;
-  color: white;
-  border: none;
-  background-color: rgb(23, 23, 116);
-  border-radius: 8px;
-`;
+// const ButtonStyled = styled.button`
+//   cursor: pointer;
+//   color: white;
+//   border: none;
+//   background-color: rgb(23, 23, 116);
+//   border-radius: 8px;
+// `;
 
-const ProductList = styled.ul``;
+// const ProductList = styled.ul``;
