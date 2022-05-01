@@ -1,22 +1,25 @@
-import { getProducts } from "../src/services/get-products";
 import ProductGrid from "../src/components/ProductGrid";
+import { getProducts } from "../src/services/get-products";
+import { AppContainer } from "../src/components/UI/AppContainer.styled";
+import { CardGrid } from "../src/components/UI/CardGrid.styled";
+import { Headline } from "../src/components/UI/Headline.styled";
 
-export function getStaticProps() {
-  const products = getProducts();
-
+export async function getStaticProps() {
+  const products = await getProducts();
   return {
-    props: {
-      products,
-    },
+    props: { products },
   };
 }
 
 export default function Products({ products }) {
   return (
-    <div>
-      <h1>Products</h1>
-
-      <ProductGrid products={products} />
-    </div>
+    <>
+      <AppContainer>
+        <Headline>Produkte</Headline>
+        <CardGrid>
+          <ProductGrid products={products} />
+        </CardGrid>
+      </AppContainer>
+    </>
   );
 }
