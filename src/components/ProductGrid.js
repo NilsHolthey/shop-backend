@@ -11,6 +11,7 @@ export default function ProductGrid({ products }) {
             description={product.description}
             price={product.price}
             tags={product.tags}
+            category={product.category}
           />
         </li>
       ))}

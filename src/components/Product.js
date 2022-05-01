@@ -32,14 +32,20 @@ function ProductModeShow({
     <div className="card">
       <div>
         <h5>{name}</h5>
-        <h5>{price}</h5>
+        <h5>{price}€</h5>
       </div>
       <div>
         <p>{description}</p>
         <p>{category}</p>
       </div>
       <ul>
-        <li>{tags}</li>
+        {tags.map((tag) => {
+          return (
+            <li className="product__tag" key={Product.id}>
+              {tag}
+            </li>
+          );
+        })}
       </ul>
       <div>
         <Button>Edit</Button>
@@ -69,7 +75,13 @@ function ProductModeDelete({
         <p>{category}</p>
       </div>
       <ul>
-        <li>{tags}</li>
+        {tags.map((tag) => {
+          return (
+            <li className="product__tag" key={Product.id}>
+              {tag}
+            </li>
+          );
+        })}
       </ul>
       <div>
         <Button>Wirklich löschen</Button>
